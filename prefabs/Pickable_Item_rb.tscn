@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl0lhu0y40bu6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7vx2n"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vx2n"]
+albedo_color = Color(0.05, 0.366667, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m33wc"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="PIckable" type="RigidBody3D" groups=["pickable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7vx2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_7vx2n")
+mesh = SubResource("BoxMesh_m33wc")

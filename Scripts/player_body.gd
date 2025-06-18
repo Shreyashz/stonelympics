@@ -1,10 +1,13 @@
 extends CharacterBody3D
-
+@export_category("Camera and Player Controls")
 @export var MOUSE_SENSITIVITY :float = 0.5
 @export var tilt_upper_limit := deg_to_rad(85)
 @export var tilt_lower_limit := deg_to_rad(-85)
 @export var CAMERA_CONTROLLER :Camera3D
+@export_category("Hands Control")
 @export var hand_animation_player: AnimationPlayer
+@export var raycast: RayCast3D
+@export var palm: Node3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -16,12 +19,11 @@ var tilt_input: float
 var player_rotation:Vector3
 var camera_rotation: Vector3
 
+var pickupObj
 
 func _input(event):
 	if event.is_action_pressed("escape"):
 		get_tree().quit()
-	if event.is_action_pressed("primary_fire"):
-		hand_animation_player.play("grab")
 
 func _unhandled_input(event: InputEvent) -> void:
 	mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
@@ -47,6 +49,17 @@ func _update_camera(delta):
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func _process(delta: float) -> void:
+	pickupObj = raycast.get_collider()
+	if raycast.is_colliding():
+		if pickupObj.is_in_group("pickable"):
+			if Input.is_action_pressed("primary_fire"):
+				pickupObj.global_position = palm.global_position
+				pickupObj.global_rotation = palm.global_rotation
+				pickupObj.collision_layer = 2
+				pickupObj.linear_velocity = Vector3(0.1, 3.0, 0.1)
+			if Input.is_action_just_pressed("primary_fire"):
+				hand_animation_player.play("grab")
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

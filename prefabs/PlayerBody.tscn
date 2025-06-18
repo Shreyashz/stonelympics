@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0t3nqlqllq6p"]
+[gd_scene load_steps=8 format=3 uid="uid://c0t3nqlqllq6p"]
 
 [ext_resource type="Script" uid="uid://cp6unkuwx4jl3" path="res://Scripts/player_body.gd" id="1_op8cb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qo75c"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op8cb"]
+albedo_color = Color(0.61, 0.2074, 0.2074, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_op8cb"]
-size = Vector3(0.2, 0.2, 1.435)
+size = Vector3(0.2, 0.2, 1.2)
 
 [sub_resource type="Animation" id="Animation_op8cb"]
 resource_name = "grab"
@@ -35,43 +38,32 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
+tracks/2/path = NodePath(".:rotation:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-0.685, -0.25, 0, 0.11, 0, -0.385, -0.055, 0, 0.25, 0, -0.785, -0.25, 0, 0.25, 0, -0.685, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.166658, 0.6, 1)
+"points": PackedFloat32Array(0, -0.25, 0, 0.11, 0, 0.0523599, -0.055, 0, 0.25, 0, -0.174533, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166667, 0.600025, 1)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:rotation:x")
+tracks/3/path = NodePath(".:rotation:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.11, 0, 0.0523599, -0.055, 0, 0.25, 0, -0.174533, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.11, 0, 0, -0.055, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.166667, 0.600025, 1)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:rotation:y")
+tracks/4/path = NodePath(".:rotation:z")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.11, 0, 0, -0.055, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.166667, 0.600025, 1)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.11, 0, 0, -0.055, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.166667, 0.600025, 1)
@@ -104,18 +96,18 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
+tracks/2/path = NodePath(".:rotation:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.685, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:rotation:x")
+tracks/3/path = NodePath(".:rotation:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -126,21 +118,10 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:rotation:y")
+tracks/4/path = NodePath(".:rotation:z")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
@@ -152,23 +133,35 @@ _data = {
 &"grab": SubResource("Animation_op8cb")
 }
 
-[node name="PlayerBody" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "hand_animation_player")]
+[node name="player_Characterbody" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "hand_animation_player", "raycast", "palm")]
 script = ExtResource("1_op8cb")
-CAMERA_CONTROLLER = NodePath("Camera3D")
-hand_animation_player = NodePath("Camera3D/Hand/Hand Animations")
+MOUSE_SENSITIVITY = 0.25
+CAMERA_CONTROLLER = NodePath("player_Camera")
+hand_animation_player = NodePath("player_Camera/player_hand/Hand Animations")
+raycast = NodePath("player_Camera/Grabraycast")
+palm = NodePath("player_Camera/player_palm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="body_player_Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qo75c")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="player_Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496426, 0)
 
-[node name="Hand" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.272, -0.685)
+[node name="player_hand" type="MeshInstance3D" parent="player_Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.272, -0.626)
+material_override = SubResource("StandardMaterial3D_op8cb")
 mesh = SubResource("BoxMesh_op8cb")
 skeleton = NodePath("../..")
 
-[node name="Hand Animations" type="AnimationPlayer" parent="Camera3D/Hand"]
+[node name="Hand Animations" type="AnimationPlayer" parent="player_Camera/player_hand"]
 libraries = {
 &"": SubResource("AnimationLibrary_l1bsi")
 }
-autoplay = "grab"
+
+[node name="Grabraycast" type="RayCast3D" parent="player_Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254276, -0.280602, -0.5)
+target_position = Vector3(0, 0, -3)
+collision_mask = 3
+
+[node name="player_palm" type="Node3D" parent="player_Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.229514, -0.26331, -1.14637)

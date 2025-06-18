@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://drxbc4q41gwl0"]
+[gd_scene load_steps=8 format=3 uid="uid://drxbc4q41gwl0"]
 
 [ext_resource type="PackedScene" uid="uid://c0t3nqlqllq6p" path="res://prefabs/PlayerBody.tscn" id="1_abhxl"]
+[ext_resource type="PackedScene" uid="uid://bl0lhu0y40bu6" path="res://prefabs/Pickable_Item_rb.tscn" id="2_g54tn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vwa3x"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -42,3 +43,6 @@ shape = SubResource("WorldBoundaryShape3D_vwa3x")
 
 [node name="PlayerBody" parent="." instance=ExtResource("1_abhxl")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.036741, 0)
+
+[node name="PIckable" parent="." instance=ExtResource("2_g54tn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18659, -0.108659, -0.015494)
