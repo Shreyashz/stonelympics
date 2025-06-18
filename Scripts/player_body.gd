@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var tilt_upper_limit := deg_to_rad(85)
 @export var tilt_lower_limit := deg_to_rad(-85)
 @export var CAMERA_CONTROLLER :Camera3D
+@export var hand_animation_player: AnimationPlayer
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -19,6 +20,8 @@ var camera_rotation: Vector3
 func _input(event):
 	if event.is_action_pressed("escape"):
 		get_tree().quit()
+	if event.is_action_pressed("primary_fire"):
+		hand_animation_player.play("grab")
 
 func _unhandled_input(event: InputEvent) -> void:
 	mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
