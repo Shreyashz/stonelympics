@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcshtb2cp8oxc"]
+
+[ext_resource type="PackedScene" uid="uid://bipsgw010jfn5" path="res://Assets/bowl.glb" id="1_y8sj4"]
+[ext_resource type="Script" uid="uid://bub14fkydsfoo" path="res://Scripts/bowl.gd" id="2_evrla"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s8apd"]
+radius = 0.96854
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("2_evrla")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_s8apd")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_y8sj4")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

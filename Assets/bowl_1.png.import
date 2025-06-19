@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ru3agd2k5f5"
+uid="uid://40rxohvh066u"
 path.s3tc="res://.godot/imported/bowl_1.png-cf90067500ad5e953f7de233f3734b06.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=8
-roughness/src_normal="res://Levels/bowl_2.png"
+roughness/src_normal="res://Assets/bowl_2.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

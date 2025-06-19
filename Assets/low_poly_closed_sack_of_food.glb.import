@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bipsgw010jfn5"
-path="res://.godot/imported/bowl.glb-8870de20b31bb7c2d53ece8c454b9e4e.scn"
+uid="uid://c04c1mdd7bg27"
+path="res://.godot/imported/low_poly_closed_sack_of_food.glb-450d393a11d118cf38052c77a17e1434.scn"
 
 [deps]
 
-source_file="res://Assets/bowl.glb"
-dest_files=["res://.godot/imported/bowl.glb-8870de20b31bb7c2d53ece8c454b9e4e.scn"]
+source_file="res://Assets/low_poly_closed_sack_of_food.glb"
+dest_files=["res://.godot/imported/low_poly_closed_sack_of_food.glb-450d393a11d118cf38052c77a17e1434.scn"]
 
 [params]
 

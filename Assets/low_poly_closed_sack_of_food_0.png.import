@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boaeed6q3bu31"
-path.s3tc="res://.godot/imported/bowl_2.png-b2d086cd845675209da906de06b84f80.s3tc.ctex"
+uid="uid://douilycho4gsl"
+path.s3tc="res://.godot/imported/low_poly_closed_sack_of_food_0.png-0bea44be09b6c1d51d3f88e8aa7d3a69.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fb2d5643af17411fb043b4bcea356d9d"
+"md5": "3b1eeb11337a4536d8603b79f7151a30"
 }
 
 [deps]
 
-source_file="res://Assets/bowl_2.png"
-dest_files=["res://.godot/imported/bowl_2.png-b2d086cd845675209da906de06b84f80.s3tc.ctex"]
+source_file="res://Assets/low_poly_closed_sack_of_food_0.png"
+dest_files=["res://.godot/imported/low_poly_closed_sack_of_food_0.png-0bea44be09b6c1d51d3f88e8aa7d3a69.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +23,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Assets/bowl_2.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
