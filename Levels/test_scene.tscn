@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://drxbc4q41gwl0"]
+[gd_scene load_steps=16 format=3 uid="uid://drxbc4q41gwl0"]
 
 [ext_resource type="PackedScene" uid="uid://c0t3nqlqllq6p" path="res://prefabs/PlayerBody.tscn" id="1_abhxl"]
+[ext_resource type="PackedScene" uid="uid://dgx3gdr0dfym3" path="res://prefabs/enemy_char_body.tscn" id="1_dc6q1"]
 [ext_resource type="PackedScene" uid="uid://bl0lhu0y40bu6" path="res://prefabs/Pickable_Item_rb.tscn" id="2_g54tn"]
+[ext_resource type="PackedScene" uid="uid://ckgmj6qvjcaig" path="res://prefabs/chicken_char_body.tscn" id="2_q5m1e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vwa3x"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -19,6 +21,28 @@ tonemap_mode = 2
 size = Vector2(5, 3)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vwa3x"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_g54tn"]
+vertices = PackedVector3Array(-7.12886, 0.1, -1.67198, -7.12886, 0.1, 2.32802, 6.87114, 0.1, 2.32802, 6.87114, 0.1, -1.67198)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g54tn"]
+albedo_color = Color(0.27, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g54tn"]
+size = Vector2(15, 5)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_q5m1e"]
+vertices = PackedVector3Array(-7, 0.5, -2, -7, 0.5, 2, 7, 0.5, 2, 7, 0.5, -2)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5m1e"]
+albedo_color = Color(0, 0.00833333, 0.25, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dc6q1"]
+size = Vector2(15, 5)
 
 [node name="TestScene" type="Node3D"]
 
@@ -41,8 +65,34 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_vwa3x")
 
+[node name="Chase_NavigationRegion" type="NavigationRegion3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
+navigation_mesh = SubResource("NavigationMesh_g54tn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Env/Chase_NavigationRegion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128862, -0.4, 0.328023)
+material_override = SubResource("StandardMaterial3D_g54tn")
+mesh = SubResource("PlaneMesh_g54tn")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="Enemy_CharBody" parent="Env/Chase_NavigationRegion" instance=ExtResource("1_dc6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.2)
+speed = 3.0
+player_path = NodePath("../../../PlayerBody")
+
+[node name="Flee_NavigationRegion" type="NavigationRegion3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.5)
+navigation_mesh = SubResource("NavigationMesh_q5m1e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Flee_NavigationRegion"]
+material_override = SubResource("StandardMaterial3D_q5m1e")
+mesh = SubResource("PlaneMesh_dc6q1")
+
+[node name="Chicken_CharBody" parent="Env/Flee_NavigationRegion" instance=ExtResource("2_q5m1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
 [node name="PlayerBody" parent="." instance=ExtResource("1_abhxl")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.036741, 0)
 
 [node name="PIckable" parent="." instance=ExtResource("2_g54tn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18659, -0.108659, -0.015494)
+transform = Transform3D(0.996922, 0, 0, 0, 0.996922, 0, 0, 0, 0.996922, 2.18659, -0.108659, -0.015494)

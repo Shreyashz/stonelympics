@@ -21,6 +21,7 @@ var player_rotation:Vector3
 var camera_rotation: Vector3
 
 var pickupObj
+var picked_objt
 
 func _input(event):
 	if event.is_action_pressed("escape"):
@@ -51,20 +52,25 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
+	if(picked_objt && hand_occupied):
+		picked_objt.global_position = palm.global_position
+		picked_objt.global_rotation = palm.global_rotation
+		picked_objt.collision_layer = 2
+		picked_objt.linear_velocity = Vector3(0, 0, 0)
 	pickupObj = raycast.get_collider()
 	if raycast.is_colliding():
 		if pickupObj.is_in_group("pickable"):
-			print(hand_occupied)
 			if Input.is_action_pressed("primary_fire"):
+				picked_objt=pickupObj
 				hand_occupied = true
 				pickupObj.global_position = palm.global_position
 				pickupObj.global_rotation = palm.global_rotation
 				pickupObj.collision_layer = 2
-				pickupObj.linear_velocity = Vector3(0.1, 3.0, 0.1)
+				pickupObj.linear_velocity = Vector3(0,0,0)
 			if Input.is_action_just_pressed("primary_fire"):
 				hand_animation_player.play("grab")
-	else:
-		hand_occupied = false
+			if Input.is_action_just_released("primary_fire"):
+				hand_occupied = false
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
