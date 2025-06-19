@@ -49,7 +49,7 @@ mesh = SubResource("PlaneMesh_l4ic0")
 material = SubResource("StandardMaterial3D_3c0l6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0.000621378, 1.35741, 1.18294)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.000621378, 1.35741, 1.18294)
 
 [node name="Untitled" parent="Camera3D" instance=ExtResource("1_r5s4t")]
 transform = Transform3D(-1, 0, -8.74228e-08, -1.91124e-08, 0.97581, 0.21862, 8.53081e-08, 0.21862, -0.97581, 0.00537984, -0.226868, -0.182989)
