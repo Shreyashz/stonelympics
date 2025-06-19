@@ -13,6 +13,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var mouse_input: bool = false
+var hand_occupied: bool = false
 var mouse_rotation: Vector3
 var rotation_input: float
 var tilt_input: float
@@ -49,18 +50,21 @@ func _update_camera(delta):
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	pickupObj = raycast.get_collider()
 	if raycast.is_colliding():
 		if pickupObj.is_in_group("pickable"):
+			print(hand_occupied)
 			if Input.is_action_pressed("primary_fire"):
+				hand_occupied = true
 				pickupObj.global_position = palm.global_position
 				pickupObj.global_rotation = palm.global_rotation
 				pickupObj.collision_layer = 2
 				pickupObj.linear_velocity = Vector3(0.1, 3.0, 0.1)
 			if Input.is_action_just_pressed("primary_fire"):
 				hand_animation_player.play("grab")
-func _physics_process(delta: float) -> void:
+	else:
+		hand_occupied = false
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
