@@ -90,6 +90,7 @@ mesh = SubResource("PlaneMesh_dc6q1")
 
 [node name="Chicken_CharBody" parent="Env/Flee_NavigationRegion" instance=ExtResource("2_q5m1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+player_path = NodePath("../../../PlayerBody")
 
 [node name="PlayerBody" parent="." instance=ExtResource("1_abhxl")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.036741, 0)
