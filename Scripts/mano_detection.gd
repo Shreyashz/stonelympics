@@ -12,9 +12,10 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if(body is RigidBody3D):
-		if(!node_3d.grabbed):
+		if(!node_3d.grabbed && body.has_berry):
 			print("GRABBED A BERRY!")
 			node_3d.grabbed=true
+			body.has_berry = false
 	
 	if(body is StaticBody3D):
 		node_3d.store()

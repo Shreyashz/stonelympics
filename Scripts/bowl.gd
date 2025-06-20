@@ -1,5 +1,5 @@
 extends RigidBody3D
-
+var has_berry = true
 func _ready() -> void:
 	gravity_scale = 0.0
 

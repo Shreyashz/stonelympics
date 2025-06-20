@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @onready var camera_3d: Camera3D = $Camera3D
@@ -7,6 +6,7 @@ extends Node3D
 var grabbed = false
 var cont = 0
 var body
+var BERRIES := 0
 var limitL = 0
 var limitR = 0
 var ableLeft = true
@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	else:
 		var tween = get_tree().create_tween()
 		tween.tween_property(mano, "position", Vector3(0.005, -0.227, -0.183), 0.1)
+		mano.rotation = Vector3(0,deg_to_rad(180),0)
 		
 func move_hand() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -40,4 +41,5 @@ func move_hand() -> void:
 
 func store():
 	if(grabbed):
-		print("ADDED A BERRY!")
+		BERRIES+=1
+		print("berries: ", BERRIES)

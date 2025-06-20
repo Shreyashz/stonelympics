@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://e45vdwv4v8e3"]
+
+[ext_resource type="Script" uid="uid://d3cqbclgkg3bo" path="res://Scripts/cock_snatcher.gd" id="1_fvf3u"]
+[ext_resource type="PackedScene" uid="uid://bnm2hcjdu6bw1" path="res://Assets/Untitled.glb" id="2_uj23b"]
+[ext_resource type="Script" uid="uid://k1bb5hf5w5dl" path="res://Scripts/mano_detection.gd" id="3_b0w26"]
+[ext_resource type="Script" uid="uid://cxny7tw3j8sk2" path="res://Scripts/bowls_manager.gd" id="4_6dyb6"]
+[ext_resource type="PackedScene" uid="uid://c04c1mdd7bg27" path="res://Assets/low_poly_closed_sack_of_food.glb" id="5_n5pdu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hy5i7"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_4212p"]
+sky_material = SubResource("ProceduralSkyMaterial_hy5i7")
+
+[sub_resource type="Environment" id="Environment_78qjw"]
+background_mode = 2
+sky = SubResource("Sky_4212p")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_hp6bt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c0l6"]
+albedo_color = Color(0.2635, 0.85, 0.47855, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hp6bt"]
+size = Vector3(0.187355, 0.312561, 0.0919724)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7idbm"]
+size = Vector3(0.251953, 0.113708, 0.1521)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_fvf3u")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_78qjw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.659393, -0.731182, -0.174852, 0.297604, 0.0402867, 0.953839, -0.690386, -0.680991, 0.244168, -0.902017, 2.69056, -1.06022)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(8.02612, 0, 0, 0, -8.238e-09, -5.17694, 0, 0.188463, -2.26291e-07, 0, 1.73164, -3.42306)
+calculate_tangents = false
+use_collision = true
+mesh = SubResource("BoxMesh_hp6bt")
+material = SubResource("StandardMaterial3D_3c0l6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000621378, 1.35741, 1.18294)
+current = true
+
+[node name="Untitled" parent="Camera3D" instance=ExtResource("2_uj23b")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.005, -0.227, -0.183)
+script = ExtResource("3_b0w26")
+
+[node name="Area3D" type="Area3D" parent="Camera3D/Untitled"]
+transform = Transform3D(10, -8.74227e-07, 1.93916e-12, 8.74227e-07, 10, -1.51462e-06, -1.80674e-12, 1.51462e-06, 10, 1.49012e-08, 0.197554, 0.0255678)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Untitled/Area3D"]
+transform = Transform3D(0.1, 6.01212e-13, 3.65041e-13, -5.78136e-15, 0.1, 5.96015e-09, -3.66818e-13, -5.96016e-09, 0.1, -0.00100835, -0.00630458, -0.00124878)
+shape = SubResource("BoxShape3D_hp6bt")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_6dyb6")
+
+[node name="sac" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99529, -0.0969402, 0, 0.0969402, 0.99529, 0.350024, 0.839108, 0.836105)
+
+[node name="Sketchfab_Scene" parent="sac" instance=ExtResource("5_n5pdu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sac"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0175781, 0.335602, -0.082397)
+shape = SubResource("BoxShape3D_7idbm")
+
+[connection signal="body_entered" from="Camera3D/Untitled/Area3D" to="Camera3D/Untitled" method="_on_area_3d_body_entered"]
+[connection signal="body_shape_entered" from="Camera3D/Untitled/Area3D" to="Camera3D/Untitled" method="_on_area_3d_body_shape_entered"]
