@@ -28,5 +28,5 @@ func _process(delta: float) -> void:
 	agent_nav.set_target_position(Target)
 	var next_nav_point = agent_nav.get_next_path_position()
 	velocity = (next_nav_point - global_transform.origin).normalized() * speed
-	look_at(direction, Vector3.UP)
+	look_at(Target, Vector3.UP)
 	move_and_slide()

@@ -22,6 +22,7 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 [global_group]
 
 pickable="Items that can be picked up by the player"
+Chickens="Chickens to be picked up for a mission"
 
 [input]
 
