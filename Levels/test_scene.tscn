@@ -84,12 +84,14 @@ player_path = NodePath("../../../PlayerBody")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.5)
 navigation_mesh = SubResource("NavigationMesh_q5m1e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Flee_NavigationRegion"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Flee_NavigationRegion" groups=["Chickens"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128862, -0.4, 0.328023)
 material_override = SubResource("StandardMaterial3D_q5m1e")
 mesh = SubResource("PlaneMesh_dc6q1")
 
 [node name="Chicken_CharBody" parent="Env/Flee_NavigationRegion" instance=ExtResource("2_q5m1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+escape_distance = 1.0
 player_path = NodePath("../../../PlayerBody")
 
 [node name="PlayerBody" parent="." instance=ExtResource("1_abhxl")]
