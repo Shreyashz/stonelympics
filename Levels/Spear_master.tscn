@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://b31nphimd3g0o"]
 
-[ext_resource type="Script" uid="uid://deqe01flw1c7q" path="res://Levels/spear_master.gd" id="1_fr4w0"]
+[ext_resource type="Script" uid="uid://deqe01flw1c7q" path="res://Scripts/spear_master.gd" id="1_fr4w0"]
 [ext_resource type="PackedScene" uid="uid://dl4g60yuptwmv" path="res://Assets/primal_spear.glb" id="2_gv705"]
-[ext_resource type="Script" uid="uid://bh5a4b2scfpv8" path="res://Levels/sharpen.gd" id="3_fr4w0"]
+[ext_resource type="Script" uid="uid://bh5a4b2scfpv8" path="res://Scripts/sharpen.gd" id="3_fr4w0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv705"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
